@@ -51,6 +51,62 @@ def main():
     </div>
     
     <style>
+    st.markdown("""
+<div style="
+    background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid #e8e8e8;
+">
+    <h1 style="color: #000000; font-size: 2.5rem; margin: 0; font-weight: 600;">
+        📈 Momentum vs Value Strategy Analysis
+    </h1>
+    <p style="color: #000000; font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
+        Compare investment strategies with 60+ global benchmarks and thousands of worldwide stocks
+    </p>
+</div>
+
+<style>
+/* === PASTE THIS OVERRIDE RIGHT HERE === */
+:root{
+  --text-color:#000000;
+  --text-color-rgb:0,0,0;
+}
+
+/* Make all markdown/body text black */
+[data-testid="stMarkdownContainer"] *,
+h1, h2, h3, h4, h5, h6,
+p, li, span, label, small, div {
+  color:#000000 !important;
+}
+
+/* Metrics and slider labels */
+[data-testid="stMetricLabel"],
+[data-testid="stMetricValue"],
+[data-testid="stSlider"] label,
+[data-testid="stTickBarMin"],
+[data-testid="stTickBarMax"],
+[data-testid="stMarkdown"] {
+  color:#000000 !important;
+}
+/* === KEEP YOUR EXISTING STYLES BELOW === */
+
+.main > div {
+    background-color: #ffffff;
+    color: #000000;  /* default text color */
+}
+
+.stApp {
+    background-color: #ffffff;
+}
+
+/* ... (rest of your existing CSS unchanged) ... */
+</style>
+""", unsafe_allow_html=True)
+
     .main > div {
         background-color: #ffffff;
         color: #000000;  /* default text color */
