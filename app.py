@@ -32,26 +32,7 @@ def main():
         return
     
     # Light banner + global styles (text -> black)
-    st.markdown("""
-    <div style="
-        background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
-        padding: 2rem;
-        border-radius: 8px;
-        text-align: center;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        border: 1px solid #e8e8e8;
-    ">
-        <h1 style="color: #000000; font-size: 2.5rem; margin: 0; font-weight: 600;">
-            📈 Momentum vs Value Strategy Analysis
-        </h1>
-        <p style="color: #000000; font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
-            Compare investment strategies with 60+ global benchmarks and thousands of worldwide stocks
-        </p>
-    </div>
-    
-    <style>
-    st.markdown("""
+st.markdown('''
 <div style="
     background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
     padding: 2rem;
@@ -70,20 +51,19 @@ def main():
 </div>
 
 <style>
-/* === PASTE THIS OVERRIDE RIGHT HERE === */
+/* Force all text to be black */
 :root{
   --text-color:#000000;
   --text-color-rgb:0,0,0;
 }
 
-/* Make all markdown/body text black */
 [data-testid="stMarkdownContainer"] *,
 h1, h2, h3, h4, h5, h6,
 p, li, span, label, small, div {
   color:#000000 !important;
 }
 
-/* Metrics and slider labels */
+/* Metrics & slider labels */
 [data-testid="stMetricLabel"],
 [data-testid="stMetricValue"],
 [data-testid="stSlider"] label,
@@ -92,73 +72,39 @@ p, li, span, label, small, div {
 [data-testid="stMarkdown"] {
   color:#000000 !important;
 }
-/* === KEEP YOUR EXISTING STYLES BELOW === */
 
-.main > div {
-    background-color: #ffffff;
-    color: #000000;  /* default text color */
+/* Keep your existing styles */
+.main > div { background-color:#ffffff; color:#000000; }
+.stApp { background-color:#ffffff; }
+
+.stButton > button {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  color:#ffffff; border:1px solid #333333; border-radius:6px;
+  padding:0.6rem 1.2rem; font-weight:500; transition:all .2s ease;
+  box-shadow:0 1px 3px rgba(0,0,0,.12);
+}
+.stButton > button:hover {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  transform: translateY(-1px);
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
 }
 
-.stApp {
-    background-color: #ffffff;
+.stTextInput > div > div > input {
+  border-radius:6px; border:1px solid #e0e0e0; background:#ffffff;
+  color:#000000; transition:all .2s ease;
+}
+.stTextInput > div > div > input:focus {
+  border-color:#666666; box-shadow:0 0 0 .1rem rgba(102,102,102,.2);
 }
 
-/* ... (rest of your existing CSS unchanged) ... */
+.stSelectbox > div > div {
+  border-radius:6px; border:1px solid #e0e0e0; background:#ffffff; color:#000000;
+}
+
+h1, h2, h3, h4 { color:#000000; font-weight:600; }
 </style>
-""", unsafe_allow_html=True)
+''', unsafe_allow_html=True)
 
-    .main > div {
-        background-color: #ffffff;
-        color: #000000;  /* default text color */
-    }
-    
-    .stApp {
-        background-color: #ffffff;
-    }
-    
-    .stButton > button {
-        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
-        color: #ffffff;
-        border: 1px solid #333333;
-        border-radius: 6px;
-        padding: 0.6rem 1.2rem;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    }
-    
-    .stButton > button:hover {
-        background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-        transform: translateY(-1px);
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    
-    .stTextInput > div > div > input {
-        border-radius: 6px;
-        border: 1px solid #e0e0e0;
-        background-color: #ffffff;
-        color: #000000; /* inputs text -> black */
-        transition: all 0.2s ease;
-    }
-    
-    .stTextInput > div > div > input:focus {
-        border-color: #666666;
-        box-shadow: 0 0 0 0.1rem rgba(102, 102, 102, 0.2);
-    }
-    
-    .stSelectbox > div > div {
-        border-radius: 6px;
-        border: 1px solid #e0e0e0;
-        background-color: #ffffff;
-        color: #000000; /* select text -> black */
-    }
-    
-    h1, h2, h3, h4 {
-        color: #000000;  /* headings -> black */
-        font-weight: 600;
-    }
-    </style>
-    """, unsafe_allow_html=True)
     
     # Main content area - unified layout
     st.markdown('<h2 style="color: #000000; text-align: center; margin: 2rem 0;">🎛️ Strategy Configuration</h2>', unsafe_allow_html=True)
