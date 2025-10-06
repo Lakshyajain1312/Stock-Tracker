@@ -31,10 +31,10 @@ def main():
         display_methodology()
         return
     
-    # Clean black and white header
+    # Light banner + global styles (text -> black)
     st.markdown("""
     <div style="
-        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
         padding: 2rem;
         border-radius: 8px;
         text-align: center;
@@ -42,10 +42,10 @@ def main():
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         border: 1px solid #e8e8e8;
     ">
-        <h1 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 600;">
+        <h1 style="color: #000000; font-size: 2.5rem; margin: 0; font-weight: 600;">
             📈 Momentum vs Value Strategy Analysis
         </h1>
-        <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
+        <p style="color: #000000; font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
             Compare investment strategies with 60+ global benchmarks and thousands of worldwide stocks
         </p>
     </div>
@@ -53,7 +53,7 @@ def main():
     <style>
     .main > div {
         background-color: #ffffff;
-        color: #1a1a1a;
+        color: #000000;  /* default text color */
     }
     
     .stApp {
@@ -81,7 +81,7 @@ def main():
         border-radius: 6px;
         border: 1px solid #e0e0e0;
         background-color: #ffffff;
-        color: #1a1a1a;
+        color: #000000; /* inputs text -> black */
         transition: all 0.2s ease;
     }
     
@@ -94,17 +94,18 @@ def main():
         border-radius: 6px;
         border: 1px solid #e0e0e0;
         background-color: #ffffff;
+        color: #000000; /* select text -> black */
     }
     
     h1, h2, h3, h4 {
-        color: #1a1a1a;
+        color: #000000;  /* headings -> black */
         font-weight: 600;
     }
     </style>
     """, unsafe_allow_html=True)
     
     # Main content area - unified layout
-    st.markdown('<h2 style="color: #1a1a1a; text-align: center; margin: 2rem 0;">🎛️ Strategy Configuration</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: #000000; text-align: center; margin: 2rem 0;">🎛️ Strategy Configuration</h2>', unsafe_allow_html=True)
     
     # Initialize data fetcher and search
     data_fetcher_instance = DataFetcher()
@@ -130,7 +131,7 @@ def main():
             benchmark_name = "S&P 500"
     
     with config_col2:
-        st.markdown('<h4 style="color: #333333;">📅 Date Range</h4>', unsafe_allow_html=True)
+        st.markdown('<h4 style="color: #000000;">📅 Date Range</h4>', unsafe_allow_html=True)
         start_date = st.date_input(
             "Start Date",
             value=date(2015, 1, 1),
@@ -148,7 +149,7 @@ def main():
         
     # Stock selection section
     st.markdown('<div style="height: 2rem;"></div>', unsafe_allow_html=True)  # Spacer
-    st.markdown('<h2 style="color: #1a1a1a; text-align: center; margin: 2rem 0;">🎯 Stock Selection</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: #000000; text-align: center; margin: 2rem 0;">🎯 Stock Selection</h2>', unsafe_allow_html=True)
     
     # Initialize variables to avoid scoping issues
     selected_stock_symbols = []
@@ -158,7 +159,7 @@ def main():
     stock2_name = benchmark_name
     
     # Multiple stock selection for benchmark comparison
-    st.markdown('<h3 style="color: #1a1a1a; margin-bottom: 1.5rem;">🎯 Select Multiple Stocks for Benchmark Comparison</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 style="color: #000000; margin-bottom: 1.5rem;">🎯 Select Multiple Stocks for Benchmark Comparison</h3>', unsafe_allow_html=True)
     
     # Initialize selected stocks list
     if 'selected_stocks' not in st.session_state:
@@ -190,20 +191,23 @@ def main():
     
     # Display selected stocks
     if st.session_state.selected_stocks:
-        st.markdown('<h4 style="color: #333333; margin-top: 2rem;">📊 Selected Stocks for Comparison</h4>', unsafe_allow_html=True)
+        st.markdown('<h4 style="color: #000000; margin-top: 2rem;">📊 Selected Stocks for Comparison</h4>', unsafe_allow_html=True)
         
         for i, stock in enumerate(st.session_state.selected_stocks):
             col1, col2 = st.columns([4, 1])
             with col1:
                 market_emoji = "🇺🇸" if "US" in stock['market'] else "🇮🇳" if "India" in stock['market'] else "🇬🇧" if "UK" in stock['market'] else "🇯🇵" if "Japan" in stock['market'] else "🌍"
-                st.markdown(f'<div style="background: #f8f8f8; padding: 0.5rem; border-radius: 6px; color: #1a1a1a; margin: 0.2rem 0; border: 1px solid #e0e0e0;">{market_emoji} <strong>{stock["name"]} ({stock["symbol"]})</strong> • {stock["market"]}</div>', unsafe_allow_html=True)
+                st.markdown(
+                    f'<div style="background: #f8f8f8; padding: 0.5rem; border-radius: 6px; color: #000000; margin: 0.2rem 0; border: 1px solid #e0e0e0;">{market_emoji} <strong>{stock["name"]} ({stock["symbol"]})</strong> • {stock["market"]}</div>',
+                    unsafe_allow_html=True
+                )
             with col2:
                 if st.button("🗑️", key=f"remove_{stock['symbol']}", help="Remove stock"):
                     st.session_state.selected_stocks.pop(i)
                     st.rerun()
     
     else:
-        st.markdown('<div style="background: #f5f5f5; padding: 1rem; border-radius: 6px; color: #666666; text-align: center; margin: 1rem 0; border: 1px solid #e0e0e0;">📋 No stocks selected yet. Search and click ➕ to add stocks for comparison.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="background: #f5f5f5; padding: 1rem; border-radius: 6px; color: #000000; text-align: center; margin: 1rem 0; border: 1px solid #e0e0e0;">📋 No stocks selected yet. Search and click ➕ to add stocks for comparison.</div>', unsafe_allow_html=True)
     
     # For multi-stock analysis, use all selected stocks
     if st.session_state.selected_stocks:
@@ -217,15 +221,15 @@ def main():
         
     # Strategy parameters section
     st.markdown('<div style="height: 2rem;"></div>', unsafe_allow_html=True)  # Spacer
-    st.markdown('<h2 style="color: #1a1a1a; text-align: center; margin: 2rem 0;">⚙️ Strategy Parameters</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: #000000; text-align: center; margin: 2rem 0;">⚙️ Strategy Parameters</h2>', unsafe_allow_html=True)
     
     param_col1, param_col2 = st.columns(2)
     with param_col1:
-        st.markdown('<h4 style="color: #333333;">📊 Momentum Strategy</h4>', unsafe_allow_html=True)
+        st.markdown('<h4 style="color: #000000;">📊 Momentum Strategy</h4>', unsafe_allow_html=True)
         momentum_period = st.slider("Lookback Period (days)", 30, 500, 120, key="momentum")
     
     with param_col2:
-        st.markdown('<h4 style="color: #333333;">💰 Value Strategy</h4>', unsafe_allow_html=True)
+        st.markdown('<h4 style="color: #000000;">💰 Value Strategy</h4>', unsafe_allow_html=True)
         value_period = st.slider("Analysis Period (days)", 120, 1000, 365, key="value")
     
     # Run strategy button
@@ -271,7 +275,7 @@ def display_multi_stock_results(selected_symbols, benchmark_symbol, benchmark_na
                                start_date, end_date):
     """Display analysis results for multiple stocks vs benchmark"""
     
-    st.markdown('<h2 style="color: #1a1a1a; text-align: center; margin: 2rem 0;">📊 Multi-Stock Analysis Results</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: #000000; text-align: center; margin: 2rem 0;">📊 Multi-Stock Analysis Results</h2>', unsafe_allow_html=True)
     
     if not selected_symbols:
         st.error("No stocks selected for analysis")
@@ -398,7 +402,9 @@ def display_multi_stock_results(selected_symbols, benchmark_symbol, benchmark_na
         xaxis_title="Date",
         yaxis_title="Normalized Price",
         hovermode='x unified',
-        height=500
+        height=500,
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000")
     )
     
     st.plotly_chart(fig_price, use_container_width=True)
@@ -434,7 +440,9 @@ def display_multi_stock_results(selected_symbols, benchmark_symbol, benchmark_na
         fig_strategies.update_layout(
             title="Individual Stock Strategy Performance",
             height=600,
-            showlegend=False
+            showlegend=False,
+            font=dict(color="#000000"),
+            title_font=dict(color="#000000")
         )
         
         st.plotly_chart(fig_strategies, use_container_width=True)
@@ -557,7 +565,9 @@ def display_results(stock1_symbol, stock2_name, stock2_symbol, stock1_data, stoc
         title="Normalized Price Comparison (Base = 100)",
         xaxis_title="Date",
         yaxis_title="Normalized Price",
-        hovermode='x unified'
+        hovermode='x unified',
+        font=dict(color="#000000"),
+        title_font=dict(color="#000000")
     )
     
     st.plotly_chart(fig_price, use_container_width=True)
@@ -608,7 +618,9 @@ def display_results(stock1_symbol, stock2_name, stock2_symbol, stock1_data, stoc
         fig_signals.update_layout(
             title="Strategy Performance Comparison",
             height=600,
-            showlegend=False
+            showlegend=False,
+            font=dict(color="#000000"),
+            title_font=dict(color="#000000")
         )
         
         st.plotly_chart(fig_signals, use_container_width=True)
@@ -642,10 +654,10 @@ def display_results(stock1_symbol, stock2_name, stock2_symbol, stock1_data, stoc
 def display_methodology():
     """Display methodology page with key metrics definitions"""
     
-    # Header for methodology page
+    # Light banner for methodology (text -> black)
     st.markdown("""
     <div style="
-        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
         padding: 2rem;
         border-radius: 8px;
         text-align: center;
@@ -653,10 +665,10 @@ def display_methodology():
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         border: 1px solid #e8e8e8;
     ">
-        <h1 style="color: white; font-size: 2.5rem; margin: 0; font-weight: 600;">
+        <h1 style="color: #000000; font-size: 2.5rem; margin: 0; font-weight: 600;">
             🔬 Methodology & Key Metrics
         </h1>
-        <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
+        <p style="color: #000000; font-size: 1.1rem; margin: 0.5rem 0 0 0; font-weight: 400;">
             Understanding the financial metrics and formulas used in our analysis
         </p>
     </div>
