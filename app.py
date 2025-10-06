@@ -31,8 +31,8 @@ def main():
         display_methodology()
         return
     
-    # Light banner + global styles (text -> black)
-st.markdown('''
+    # Light banner + global styles (force text -> black)
+    st.markdown('''
 <div style="
     background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
     padding: 2rem;
@@ -51,19 +51,18 @@ st.markdown('''
 </div>
 
 <style>
-/* Force all text to be black */
-:root{
-  --text-color:#000000;
-  --text-color-rgb:0,0,0;
-}
+/* -------- Global: make ALL app text black -------- */
+:root { --text-color:#000000; --text-color-rgb:0,0,0; }
 
-[data-testid="stMarkdownContainer"] *,
+body, [data-testid="stAppViewContainer"] * ,
+[data-testid="stSidebar"] * ,
+[data-testid="stMarkdownContainer"] * ,
 h1, h2, h3, h4, h5, h6,
 p, li, span, label, small, div {
   color:#000000 !important;
 }
 
-/* Metrics & slider labels */
+/* Metrics, sliders, and helper labels */
 [data-testid="stMetricLabel"],
 [data-testid="stMetricValue"],
 [data-testid="stSlider"] label,
@@ -73,10 +72,14 @@ p, li, span, label, small, div {
   color:#000000 !important;
 }
 
-/* Keep your existing styles */
+/* Expander content */
+[data-testid="stExpander"] * { color:#000000 !important; }
+
+/* Container backgrounds */
 .main > div { background-color:#ffffff; color:#000000; }
 .stApp { background-color:#ffffff; }
 
+/* Buttons */
 .stButton > button {
   background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
   color:#ffffff; border:1px solid #333333; border-radius:6px;
@@ -89,18 +92,22 @@ p, li, span, label, small, div {
   box-shadow:0 2px 6px rgba(0,0,0,.15);
 }
 
+/* Inputs */
 .stTextInput > div > div > input {
-  border-radius:6px; border:1px solid #e0e0e0; background:#ffffff;
+  border-radius:6px; border:1px solid #e0e0e0; background-color:#ffffff;
   color:#000000; transition:all .2s ease;
 }
 .stTextInput > div > div > input:focus {
   border-color:#666666; box-shadow:0 0 0 .1rem rgba(102,102,102,.2);
 }
 
+/* Selects */
 .stSelectbox > div > div {
-  border-radius:6px; border:1px solid #e0e0e0; background:#ffffff; color:#000000;
+  border-radius:6px; border:1px solid #e0e0e0; background-color:#ffffff;
+  color:#000000;
 }
 
+/* Headings */
 h1, h2, h3, h4 { color:#000000; font-weight:600; }
 </style>
 ''', unsafe_allow_html=True)
