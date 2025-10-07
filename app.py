@@ -113,6 +113,24 @@ p, li, span, label, small, div {
 
 /* Headings */
 h1, h2, h3, h4 { color:#000000; font-weight:600; }
+/* Dropdown / autocomplete suggestions styling */
+div[data-baseweb="popover"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+div[data-baseweb="popover"] * {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+div[data-baseweb="popover"] [role="option"]:hover {
+  background-color: #f0f0f0 !important;
+  color: #000000 !important;
+}
 </style>
 ''', unsafe_allow_html=True)
 
