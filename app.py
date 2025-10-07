@@ -113,24 +113,33 @@ p, li, span, label, small, div {
 
 /* Headings */
 h1, h2, h3, h4 { color:#000000; font-weight:600; }
-/* Dropdown / autocomplete suggestions styling */
+/* Autocomplete suggestions dropdown */
 div[data-baseweb="popover"] {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 1px solid #e0e0e0 !important;
+  background-color: #ffffff !important; /* white background */
+  border: 1px solid #dcdcdc !important;
   border-radius: 6px !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  color: #000000 !important; /* black text */
 }
 
-div[data-baseweb="popover"] * {
-  color: #000000 !important;
+/* Make the "Suggestions" header white with black text */
+div[data-baseweb="popover"] [data-testid="stMarkdownContainer"] {
   background-color: #ffffff !important;
-}
-
-div[data-baseweb="popover"] [role="option"]:hover {
-  background-color: #f0f0f0 !important;
   color: #000000 !important;
 }
+
+/* Make each suggestion white with black text */
+div[data-baseweb="popover"] [role="option"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Hover effect for suggestions */
+div[data-baseweb="popover"] [role="option"]:hover {
+  background-color: #f2f2f2 !important;
+  color: #000000 !important;
+}
+
 </style>
 ''', unsafe_allow_html=True)
 
