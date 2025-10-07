@@ -81,10 +81,14 @@ p, li, span, label, small, div {
 
 /* Buttons */
 .stButton > button {
-  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
-  color:#ffffff; border:1px solid #333333; border-radius:6px;
-  padding:0.6rem 1.2rem; font-weight:500; transition:all .2s ease;
-  box-shadow:0 1px 3px rgba(0,0,0,.12);
+  background: #ffffff ;
+  color: #000000 ;
+  border: 1px solid #e0e0e0 ;
+  border-radius: 6px ;
+  padding: 0.6rem 1.2rem ;
+  font-weight: 500 ;
+  transition: all 0.2s ease ;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) ;
 }
 .stButton > button:hover {
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
