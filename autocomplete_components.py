@@ -51,7 +51,19 @@ def stock_autocomplete(
             search_results = yfinance_search.search_stocks_autocomplete(search_query, limit=6)
             
             if search_results:
-                st.markdown(f'<div style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); padding: 0.5rem; border-radius: 6px; margin: 0.5rem 0; border: 1px solid #e8e8e8;"><span style="color: white; font-weight: 500;">💡 {len(search_results)} suggestions</span></div>', unsafe_allow_html=True)
+               st.markdown(f'''
+<div style="
+    background: #ffffff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+">
+    <span style="color: #000000; font-weight: 500;">💡 {len(search_results)} suggestions</span>
+</div>
+''', unsafe_allow_html=True)
+
                 
                 # Create columns for suggestions
                 cols = st.columns(2)
